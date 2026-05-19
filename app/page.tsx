@@ -206,8 +206,6 @@ export default function Home() {
             {/* Component Orbit Images */}
             <OrbitImages
               images={orbitImages}
-              radius={200}
-              duration={30}
               itemSize={80}
             />
 
