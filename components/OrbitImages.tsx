@@ -1,8 +1,12 @@
-// components/OrbitImages.tsx
 "use client";
 import { useState, useEffect } from "react";
 
-export default function OrbitImages({ images, itemSize = 80 }) {
+interface OrbitImagesProps {
+  images: string[];
+  itemSize?: number;
+}
+
+export default function OrbitImages({ images, itemSize = 80 }: OrbitImagesProps) {
   const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
@@ -19,7 +23,7 @@ export default function OrbitImages({ images, itemSize = 80 }) {
         <div className="absolute inset-0 border-2 border-purple-500/30 rounded-full"></div>
         
         {/* Gambar */}
-        {images.map((src, idx) => {
+        {images.map((src: string, idx: number) => {
           const angle = (idx * 60 + rotation) * Math.PI / 180;
           const x = Math.cos(angle) * 200;
           const y = Math.sin(angle) * 70;
@@ -38,7 +42,6 @@ export default function OrbitImages({ images, itemSize = 80 }) {
               }}
             >
               <div className="w-full h-full rounded-full overflow-hidden shadow-lg shadow-purple-500/50 border-2 border-purple-500/30 bg-gray-800 flex items-center justify-center">
-                {/* Pakai img biasa dulu, bukan next/image */}
                 <img
                   src={src}
                   alt="orbit"
